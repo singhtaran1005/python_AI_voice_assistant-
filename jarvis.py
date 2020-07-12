@@ -1,7 +1,7 @@
 import pyttsx3  
-import speech_recognition as sr 
+import speech_recognition as sr  
 import datetime
-import wikipedia 
+import wikipedia  
 import webbrowser
 import os
 import smtplib
@@ -54,7 +54,8 @@ def takecommand():
 
 if __name__ == "__main__":
     wishMe()
-    while True:
+    # while True:
+    if 1:
         query = takecommand().lower()
 
     #Logic for executing task based on query
@@ -65,3 +66,22 @@ if __name__ == "__main__":
         speak("According to wikipedia")
         print(results)
         speak(results)
+
+        
+    elif 'open youtube' in query:
+            webbrowser.open("youtube.com")
+
+    elif 'open google' in query:
+            webbrowser.open("google.com")
+
+    elif 'open stackoverflow' in query:
+            webbrowser.open("stackoverflow.com") 
+    elif 'playmusic' in query:
+        music_dir = 'C:\\music_dir'
+        songs = os.listdir(music_dir)
+        print(songs)
+        os.startfile(os.path.join(music_dir,songs[0]))
+        
+    elif 'the time' in query:
+        strTime = datetime.datetime.now().strftime("%H:%M:%S")
+        speak(f"Sir the time is {strTime}")
