@@ -52,6 +52,18 @@ def takecommand():
         return "None"
     return query
 
+# use smtplib to send mails from Gmail
+# enable less secure apps to the account to which the email is to be sent
+def sendemail(to,content):
+
+    server = smtplib.SMTP('smntp.gmail.com',587)
+    server.ehlo()
+    server.starttls()
+    server.login('your_email@gmail.com','your_password')
+    server.sendmail('your_email@gmail.com', to ,content)
+    server.close()
+
+
 if __name__ == "__main__":
     wishMe()
     # while True:
@@ -85,3 +97,14 @@ if __name__ == "__main__":
     elif 'the time' in query:
         strTime = datetime.datetime.now().strftime("%H:%M:%S")
         speak(f"Sir the time is {strTime}")
+
+    elif 'email to Taran' in query:
+        try:
+                speak("What should I say?")
+                content = takecommand()
+                to = "your_emailgmail.com"    
+                sendemail(to,content)
+                speak("Email has been sent!")
+        except Exception as e:
+                print(e)
+                speak("Sorry my friend taran bhai. I am not able to send this email")    
