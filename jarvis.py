@@ -6,6 +6,7 @@ import webbrowser
 import os
 import smtplib
 from email.mime import audio
+from pygame import mixer
 
 
 engine = pyttsx3.init('sapi5')
@@ -89,10 +90,17 @@ if __name__ == "__main__":
     elif 'open stackoverflow' in query:
             webbrowser.open("stackoverflow.com") 
     elif 'playmusic' in query:
-        music_dir = 'C:\\music_dir'
-        songs = os.listdir(music_dir)
-        print(songs)
-        os.startfile(os.path.join(music_dir,songs[0]))
+        music_dir = 'C:\\music_dir\\song_name.mp3'
+        #songs = os.listdir(music_dir)
+        #print(songs)
+        #os.startfile(os.path.join(music_dir,songs[0]))
+        mixer.init()
+        mixer.music.load('music_dir')
+        mixer.music.play()
+        
+    #stop music functionality 
+    elif 'stop music' in query:
+            mixer.music.stop()
         
     elif 'the time' in query:
         strTime = datetime.datetime.now().strftime("%H:%M:%S")
@@ -107,4 +115,7 @@ if __name__ == "__main__":
                 speak("Email has been sent!")
         except Exception as e:
                 print(e)
-                speak("Sorry my friend taran bhai. I am not able to send this email")    
+                speak("Sorry my friend taran bhai. I am not able to send this email")
+     elif 'turn off' in query:
+            speak('Good Bye Master')
+            break
