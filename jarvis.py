@@ -5,6 +5,8 @@ import wikipedia
 import webbrowser
 import os
 import smtplib
+import matplotlib
+import scikit-learn
 from email.mime import audio
 from pygame import mixer
 
