@@ -28,10 +28,10 @@ def wishMe():
         speak("Good Morning")
 
     elif hour >= 12 and hour < 18:
-        speak("Good Afternoon Sir")
+        speak("Good Afternoon Sir, How are You?")
 
     else:
-        speak("Good Evening Sir") 
+        speak("Good Evening Sir, How are You") 
 
 
 speak("I am Jarvis Sir. Please tell me how may I help you")
@@ -75,7 +75,7 @@ if __name__ == "__main__":
 
     #Logic for executing task based on query
     if 'wikipedia' in query:
-        speak("searching wikipedia!")
+        speak("searching wikipedia!, Hello")
         query = query.replace("Wikipedia", "")
         results = wikipedia.summary(query,sentences=2)
         speak("According to wikipedia")
@@ -119,5 +119,5 @@ if __name__ == "__main__":
                 print(e)
                 speak("Sorry my friend taran bhai. I am not able to send this email")
      elif 'turn off' in query:
-            speak('Good Bye Master')
+            speak('Good Bye Master,see ya')
             break
